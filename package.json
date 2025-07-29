@@ -1,29 +1,42 @@
 {
-  "name": "create-tailwind-app",
-  "version": "1.0.1",
-  "description": "Build the HTML template with tailwind css.",
-  "type": "commonjs",
+  "name": "banking-dashboard",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "start": "live-server ./public ",
-    "build": "postcss css/main.css -o public/assets/css/build/tailwind.css --minify",
-    "tailwind": "tailwindcss  -i css/main.css -o public/assets/css/build/tailwind.css --minify  & live-server ./public ",
-    "dev": " live-server ./public & postcss css/main.css -o public/assets/css/build/tailwind.css --minify --watch  "
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "keywords": [
-    "HTML template",
-    "tailwindcss",
-    "tailwind",
-    "HTML",
-    " css framework"
-  ],
-  "author": "Rajdeep Singh",
-  "license": "MIT",
+  "dependencies": {
+    "@radix-ui/react-dialog": "^1.0.5",
+    "@radix-ui/react-dropdown-menu": "^2.0.6",
+    "@radix-ui/react-label": "^2.0.2",
+    "@radix-ui/react-select": "^2.0.0",
+    "@radix-ui/react-separator": "^1.0.3",
+    "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-toast": "^1.1.5",
+    "axios": "^1.11.0",
+    "chart.js": "^4.4.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "lucide-react": "^0.294.0",
+    "next": "14.0.0",
+    "react": "^18",
+    "react-chartjs-2": "^5.2.0",
+    "react-dom": "^18",
+    "tailwind-merge": "^2.0.0"
+  },
   "devDependencies": {
-    "autoprefixer": "^10.4.7",
-    "cssnano": "^5.1.9",
-    "live-server": "^1.2.2",
-    "postcss": "^8.4.14",
-    "postcss-cli": "^9.1.0",
-    "tailwindcss": "^3.0.24"
+    "@types/axios": "^0.9.36",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.0.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.0",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5"
   }
 }
