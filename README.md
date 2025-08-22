@@ -36,7 +36,7 @@ This is the frontend application for the **Banking Dashboard** project, built us
 
 ### Installation
 
-```bash
+
 # Clone the repository
 git clone https://github.com/yourusername/bank_frontend.git
 cd bank_frontend
@@ -68,3 +68,11 @@ bank_frontend/
 ├── styles/               # Tailwind & global CSS
 ├── public/               # Static assets
 └── README.md
+
+
+<img width="544" height="513" alt="image" src="https://github.com/user-attachments/assets/844901ba-beb9-4f20-a4bb-6093ad0ea546" />
+<img width="1302" height="596" alt="image" src="https://github.com/user-attachments/assets/ff8163b8-ef37-4711-8eab-2462fa36a08c" />
+
+
+
+<img width="1278" height="577" alt="image" src="https://github.com/user-attachments/assets/7932b556-0a7a-4e81-aa42-c9315f07d601" />
