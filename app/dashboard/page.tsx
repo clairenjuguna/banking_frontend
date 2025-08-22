@@ -3,12 +3,25 @@
 import { useAuth } from "../../components/auth-provider"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../components/ui/card"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "../../components/ui/card"
 import { Button } from "../../components/ui/button"
 import { Badge } from "../../components/ui/badge"
-
 import { Separator } from "../../components/ui/separator"
-import { ArrowUpRight, ArrowDownLeft, Send, Eye, LogOut, User, Banknote } from "lucide-react"
+import {
+  ArrowUpRight,
+  ArrowDownLeft,
+  Send,
+  Eye,
+  LogOut,
+  User,
+  Banknote,
+} from "lucide-react"
 import { TransferModal } from "../../components/transfer-modal"
 import {
   Chart as ChartJS,
@@ -38,47 +51,13 @@ export default function DashboardPage() {
   const { user, logout } = useAuth()
   const router = useRouter()
   const [showTransferModal, setShowTransferModal] = useState(false)
+
   const [transactions] = useState<Transaction[]>([
-    {
-      id: "1",
-      type: "credit",
-      amount: 5000,
-      description: "Salary deposit",
-      date: "2024-01-15",
-      from: "Employer",
-    },
-    {
-      id: "2",
-      type: "debit",
-      amount: 1200,
-      description: "Grocery shopping",
-      date: "2024-01-14",
-      to: "SuperMart",
-    },
-    {
-      id: "3",
-      type: "credit",
-      amount: 2000,
-      description: "Transfer from John",
-      date: "2024-01-13",
-      from: "John Doe",
-    },
-    {
-      id: "4",
-      type: "debit",
-      amount: 800,
-      description: "Utility bills",
-      date: "2024-01-12",
-      to: "KPLC",
-    },
-    {
-      id: "5",
-      type: "debit",
-      amount: 300,
-      description: "Coffee shop",
-      date: "2024-01-11",
-      to: "Java House",
-    },
+    { id: "1", type: "credit", amount: 5000, description: "Salary deposit", date: "2024-01-15", from: "Employer" },
+    { id: "2", type: "debit", amount: 1200, description: "Grocery shopping", date: "2024-01-14", to: "SuperMart" },
+    { id: "3", type: "credit", amount: 2000, description: "Transfer from John", date: "2024-01-13", from: "John Doe" },
+    { id: "4", type: "debit", amount: 800, description: "Utility bills", date: "2024-01-12", to: "KPLC" },
+    { id: "5", type: "debit", amount: 300, description: "Coffee shop", date: "2024-01-11", to: "Java House" },
   ])
 
   useEffect(() => {
@@ -89,16 +68,13 @@ export default function DashboardPage() {
     }
   }, [user, router])
 
-  if (!user || user.isAdmin) {
-    return null
-  }
+  if (!user || user.isAdmin) return null
 
   const recentTransactions = transactions.slice(0, 5)
   const totalDeposits = transactions.filter((t) => t.type === "credit").reduce((sum, t) => sum + t.amount, 0)
   const totalWithdrawals = transactions.filter((t) => t.type === "debit").reduce((sum, t) => sum + t.amount, 0)
   const pendingTransactions = 2
 
-  // Mock chart data
   const chartData = {
     labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
     datasets: [
@@ -115,19 +91,10 @@ export default function DashboardPage() {
   const chartOptions = {
     responsive: true,
     plugins: {
-      legend: {
-        position: "top" as const,
-      },
-      title: {
-        display: true,
-        text: "Weekly Spending Trend",
-      },
+      legend: { position: "top" as const },
+      title: { display: true, text: "Weekly Spending Trend" },
     },
-    scales: {
-      y: {
-        beginAtZero: true,
-      },
-    },
+    scales: { y: { beginAtZero: true } },
   }
 
   return (
@@ -141,20 +108,21 @@ export default function DashboardPage() {
               <span className="text-xl font-bold text-gray-900">BankDash</span>
             </div>
             <div className="flex items-center space-x-4">
-              <span className="text-sm text-gray-600">Welcome, {user.name}</span>
+              <span className="text-sm text-gray-600">
+                Welcome, {user.first_name} {user.last_name}
+              </span>
               <Button variant="ghost" size="sm" onClick={() => router.push("/profile")}>
-                <User className="h-4 w-4 mr-2" />
-                Profile
+                <User className="h-4 w-4 mr-2" /> Profile
               </Button>
               <Button variant="ghost" size="sm" onClick={logout}>
-                <LogOut className="h-4 w-4 mr-2" />
-                Logout
+                <LogOut className="h-4 w-4 mr-2" /> Logout
               </Button>
             </div>
           </div>
         </div>
       </header>
 
+      {/* Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Account Summary */}
         <div className="mb-8">
@@ -167,19 +135,22 @@ export default function DashboardPage() {
               <div className="flex items-center justify-between mb-6">
                 <div>
                   <p className="text-sm text-gray-600">Current Balance</p>
-                  <p className="text-3xl font-bold text-green-600">KES {user.balance.toLocaleString()}</p>
-                  <Badge variant={user.balance < 100 ? "destructive" : "secondary"} className="mt-2">
+                  <p className="text-3xl font-bold text-green-600">
+                    KES {user.balance.toLocaleString()}
+                  </p>
+                  <Badge
+                    variant={user.balance < 100 ? "destructive" : "secondary"}
+                    className="mt-2"
+                  >
                     {user.accountType} Account
                   </Badge>
                 </div>
                 <div className="flex space-x-2">
                   <Button onClick={() => setShowTransferModal(true)}>
-                    <Send className="h-4 w-4 mr-2" />
-                    Transfer Money
+                    <Send className="h-4 w-4 mr-2" /> Transfer Money
                   </Button>
                   <Button variant="outline" onClick={() => router.push("/profile")}>
-                    <Eye className="h-4 w-4 mr-2" />
-                    View Details
+                    <Eye className="h-4 w-4 mr-2" /> View Details
                   </Button>
                 </div>
               </div>
@@ -195,18 +166,24 @@ export default function DashboardPage() {
               <ArrowDownLeft className="h-4 w-4 text-green-600" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-green-600">KES {totalDeposits.toLocaleString()}</div>
+              <div className="text-2xl font-bold text-green-600">
+                KES {totalDeposits.toLocaleString()}
+              </div>
             </CardContent>
           </Card>
+
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Withdrawals</CardTitle>
               <ArrowUpRight className="h-4 w-4 text-red-600" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-red-600">KES {totalWithdrawals.toLocaleString()}</div>
+              <div className="text-2xl font-bold text-red-600">
+                KES {totalWithdrawals.toLocaleString()}
+              </div>
             </CardContent>
           </Card>
+
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Pending Transactions</CardTitle>
@@ -231,7 +208,9 @@ export default function DashboardPage() {
                   <div key={transaction.id} className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">
                       <div
-                        className={`p-2 rounded-full ${transaction.type === "credit" ? "bg-green-100" : "bg-red-100"}`}
+                        className={`p-2 rounded-full ${
+                          transaction.type === "credit" ? "bg-green-100" : "bg-red-100"
+                        }`}
                       >
                         {transaction.type === "credit" ? (
                           <ArrowDownLeft className="h-4 w-4 text-green-600" />
@@ -245,15 +224,22 @@ export default function DashboardPage() {
                       </div>
                     </div>
                     <div
-                      className={`font-semibold ${transaction.type === "credit" ? "text-green-600" : "text-red-600"}`}
+                      className={`font-semibold ${
+                        transaction.type === "credit" ? "text-green-600" : "text-red-600"
+                      }`}
                     >
-                      {transaction.type === "credit" ? "+" : "-"}KES {transaction.amount.toLocaleString()}
+                      {transaction.type === "credit" ? "+" : "-"}KES{" "}
+                      {transaction.amount.toLocaleString()}
                     </div>
                   </div>
                 ))}
               </div>
               <Separator className="my-4" />
-              <Button variant="outline" className="w-full bg-transparent" onClick={() => router.push("/profile")}>
+              <Button
+                variant="outline"
+                className="w-full bg-transparent"
+                onClick={() => router.push("/profile")}
+              >
                 View All Transactions
               </Button>
             </CardContent>
