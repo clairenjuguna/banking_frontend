@@ -70,7 +70,9 @@ bank_frontend/
 └── README.md
 
 
-<img width="544" height="513" alt="image" src="https://github.com/user-attachments/assets/844901ba-beb9-4f20-a4bb-6093ad0ea546" />
+<img width="691" height="526" alt="image" src="https://github.com/user-attachments/assets/07fcb6f0-a4a0-46a6-a4d7-d5082eea8d97" />
+<img width="564" height="590" alt="image" src="https://github.com/user-attachments/assets/2b69ceed-e1a4-4df6-baff-f766186b15ef" />
+
 <img width="1302" height="596" alt="image" src="https://github.com/user-attachments/assets/ff8163b8-ef37-4711-8eab-2462fa36a08c" />
 
 
